@@ -1040,3 +1040,7 @@ export const CONTEXT_MOVE = () => "Move to page";
 export const CONTEXT_COPY = () => "Copy to page";
 export const CONTEXT_DELETE = () => "Delete";
 export const CONTEXT_NO_PAGE = () => "No pages";
+export const NO_JS_FUNCTION_TO_RUN = (
+  JSObjectName: string,
+) => `${JSObjectName} has no function,
+please create a function.`;
