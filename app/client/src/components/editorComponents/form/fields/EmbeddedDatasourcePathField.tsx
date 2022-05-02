@@ -195,8 +195,22 @@ class EmbeddedDatasourcePathComponent extends React.Component<
 > {
   constructor(props: Props) {
     super(props);
+    const { orgId, pluginId } = this.props;
     this.state = { highlightedElementWidth: 0 };
+    this.props.updateDatasource({ ...DEFAULT_DATASOURCE(pluginId, orgId) });
+    console.log("Datasource: ", this.props.datasource);
   }
+
+  // componentDidMount() {
+  //   const { datasource, orgId, pluginId } = this.props;
+  //   this.setState({
+  //     datasource: { ...DEFAULT_DATASOURCE(orgId, pluginId) },
+  //   });
+  //   console.log("orgId: ", orgId);
+  //   console.log("pluginId", pluginId);
+  //   console.log("datasource", datasource);
+  //   console.log("datasource after update", datasource);
+  // }
 
   handleDatasourceUrlUpdate = (datasourceUrl: string) => {
     const { datasource, orgId, pluginId } = this.props;
@@ -449,9 +463,9 @@ class EmbeddedDatasourcePathComponent extends React.Component<
       pluginId,
     } = this.props;
     const datasourceUrl = get(datasource, "datasourceConfiguration.url", "");
-    if (datasourceUrl === "") {
-      this.props.updateDatasource({ ...DEFAULT_DATASOURCE(pluginId, orgId) });
-    }
+    // if (datasourceUrl === "") {
+    //   this.props.updateDatasource({ ...DEFAULT_DATASOURCE(pluginId, orgId) });
+    // }
     const displayValue = `${datasourceUrl}${value}`;
     const input = {
       ...this.props.input,
